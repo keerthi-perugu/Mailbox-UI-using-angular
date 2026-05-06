@@ -1,0 +1,218 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--sidebar-width);
+  background: var(--color-surface-alt);
+  padding: 20px 0;
+  transition: background var(--transition-med);
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 20px 24px;
+    border-bottom: 1px solid rgba(194, 53, 53, 0.06);
+  }
+
+  &__logo-mark {
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: black;
+    letter-spacing: -0.3px;
+  }
+
+  &__compose {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 16px 8px;
+  padding: 10px 16px;
+  background: #1bb1d6;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+  letter-spacing: 0.1px;
+
+  &:active {
+    background: #185ABC;
+    transform: none;
+  }
+}
+
+  &__nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+
+    ul {
+      list-style: none;
+    }
+  }
+
+  &__nav-label {
+    padding: 12px 20px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: black(255, 255, 255, 0.87);
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 20px;
+    background: none;
+    border: none;
+    color: black;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    border-radius: 0;
+    transition: all var(--transition-fast);
+    position: relative;
+    text-align: left;
+
+    &:hover {
+      background: var(--color-sidebar-hover);
+      color: #1bb1d6;
+    }
+
+    &--active {
+      color: black;
+      font-weight: 600;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 60%;
+        background: var(--color-sidebar-active);
+        border-radius: 0 3px 3px 0;
+      }
+    }
+  }
+
+  &__nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.7;
+
+    .sidebar__nav-item--active & {
+      opacity: 1;
+      color: black;
+    }
+  }
+
+  &__nav-label-text {
+    flex: 1;
+  }
+
+  &__nav-badge {
+    color:black;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 20px;
+    min-width: 20px;
+    text-align: center;
+  }
+
+  &__bottom {
+    padding: 16px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    color: var(--color-sidebar-text);
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    width: 100%;
+
+    &:hover {
+      color: black;
+    }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 4px;
+  }
+
+  &__user-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  &__user-info {
+    overflow: hidden;
+  }
+
+  &__user-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a0a0a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__user-email {
+    font-size: 11px;
+    color: var(--color-sidebar-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

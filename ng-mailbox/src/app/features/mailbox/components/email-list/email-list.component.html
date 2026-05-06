@@ -1,0 +1,64 @@
+<div class="email-list">
+  <!-- Header -->
+  <div class="email-list__header">
+    <div class="email-list__title-row">
+      <h2 class="email-list__title">{{ folderTitle }}</h2>
+  
+    <div class="email-list__search">
+      <svg class="email-list__search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M10.5 10.5L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <input
+        type="text"
+        class="email-list__search-input"
+        placeholder="Search {{ folderTitle | lowercase }}..."
+        [value]="searchQuery"
+        (input)="onSearch($any($event.target).value)"
+      />
+      <button
+        class="email-list__search-clear"
+        *ngIf="searchQuery"
+        (click)="onSearch('')">
+        
+      </button>
+    </div>
+    <div class="email-list__pagination-img">
+  <img src="assets/avatars/pagination.png" alt="pagination controls" />
+</div>
+  </div>
+
+  <div class="email-list__body" *ngIf="isLoading">
+    <div class="email-list__skeleton" *ngFor="let i of [1,2,3,4,5]">
+      <div class="skeleton-avatar"></div>
+      <div class="skeleton-lines">
+        <div class="skeleton-line skeleton-line--short"></div>
+        <div class="skeleton-line skeleton-line--medium"></div>
+        <div class="skeleton-line skeleton-line--long"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="email-list__body" *ngIf="!isLoading">
+    <ng-container *ngIf="filteredEmails.length > 0; else emptyState">
+      <app-email-card
+        *ngFor="let email of filteredEmails; trackBy: trackById"
+        [email]="email"
+        [isSelected]="selectedEmail?.id === email.id"
+        (selected)="selectEmail($event)"
+        (starred)="toggleStar($event)">
+      </app-email-card>
+    </ng-container>
+
+    <ng-template #emptyState>
+      <div class="email-list__empty">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="6" y="10" width="36" height="28" rx="4" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.3"/>
+          <path d="M6 18l18 12 18-12" stroke="currentColor" stroke-width="1.5" stroke-opacity="0.3"/>
+        </svg>
+        <p *ngIf="searchQuery">No results for "{{ searchQuery }}"</p>
+        <p *ngIf="!searchQuery">{{ folderTitle }} is empty</p>
+      </div>
+    </ng-template>
+  </div>
+</div>

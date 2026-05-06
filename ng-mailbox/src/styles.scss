@@ -1,0 +1,97 @@
+:root {
+  --color-accent: #1A73E8;
+  --color-accent-soft: #E8F0FE;
+  --color-accent-dark: #1765CC;
+
+  --color-bg: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F6F8FC;
+
+  --color-sidebar-bg: #F6F8FC;
+  --color-sidebar-text: #202124;
+  --color-sidebar-active: #1A73E8;
+  --color-sidebar-hover: #E8F0FE;
+
+  --color-text-primary: #202124;
+  --color-text-secondary: #5F6368;
+  --color-text-muted: #5F6368;
+
+  --color-border: #E0E0E0;
+  --color-border-light: #F1F3F4;
+
+  --shadow-card: 0 1px 2px rgba(60,64,67,0.15);
+  --shadow-panel: 0 1px 3px rgba(60,64,67,0.3);
+
+  --sidebar-width: 260px;
+  --list-width: 360px;
+  --border-radius: 8px;
+  --border-radius-sm: 6px;
+
+  --font-body: 'Roboto', sans-serif;
+  --font-display: 'Google Sans', 'Roboto', sans-serif;
+
+  --transition-fast: 150ms ease;
+  --transition-med: 250ms ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #DADCE0;
+  border-radius: 3px;
+
+  &:hover {
+    background: #BDC1C6;
+  }
+}
+.app-entry {
+  transform: scale(0.95);
+  opacity: 0;
+  animation: zoomIn 300ms ease-out forwards;
+}
+
+@keyframes zoomIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}

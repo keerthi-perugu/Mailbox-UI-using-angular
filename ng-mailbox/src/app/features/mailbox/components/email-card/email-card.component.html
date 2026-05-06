@@ -1,0 +1,43 @@
+<div
+  class="email-card"
+  [class.email-card--selected]="isSelected"
+  [class.email-card--unread]="!email.isRead"
+  (click)="onSelect()">
+
+  <!-- Unread dot -->
+  <span class="email-card__unread-dot" *ngIf="!email.isRead"></span>
+
+  <!-- Avatar -->
+  <div class="email-card__avatar" [style.background]="email.avatarColor">
+    <img 
+       *ngIf="email.avatarImage"
+       [src]="email.avatarImage"
+       [alt]="email.sender"
+       class="email-card__avatar-img"/>
+
+    <span *ngIf="!email.avatarImage">{{ getInitials(email.sender) }}</span>
+  </div>
+
+  <!-- Content -->
+  <div class="email-card__content">
+    <div class="email-card__top">
+      <span class="email-card__sender">{{ email.sender }}</span>
+      <span class="email-card__time">{{ email.timestamp | relativeTime }}</span>
+    </div>
+
+    <p class="email-card__subject">{{ email.subject }}</p>
+    <p class="email-card__preview">{{ email.preview }}</p>
+
+    
+  </div>
+
+  <!-- Star button -->
+  <button class="email-card__star" (click)="onStar($event)" [class.email-card__star--active]="email.isStarred">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M7 1l1.545 3.13L12 4.635l-2.5 2.436.59 3.44L7 8.9l-3.09 1.615.59-3.44L2 4.635l3.455-.505L7 1z"
+        [attr.fill]="email.isStarred ? '#1A73E8' : 'none'"
+        [attr.stroke]="email.isStarred ? '#1A73E8' : 'currentColor'"
+        stroke-width="1.2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>

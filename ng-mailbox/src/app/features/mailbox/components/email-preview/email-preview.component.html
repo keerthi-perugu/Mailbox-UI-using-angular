@@ -1,0 +1,70 @@
+<div class="preview" *ngIf="email; else noSelection">
+  <div class="preview__toolbar">
+    
+   
+    <div class="email-list__forward-img">
+  <img src="assets/avatars/forward.png" alt="forward controls" />
+</div>
+  </div>
+
+  <div class="preview__content">
+
+    <div class="preview__meta">
+      <div class="preview__avatar" [style.background]="email.avatarColor">
+        <img
+          *ngIf="email.avatarImage"
+          [src]="email.avatarImage"
+          [alt]="email.sender"
+          style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block;"
+        />
+        <span *ngIf="!email.avatarImage">
+          {{ getInitials(email.sender) }}
+        </span>
+      </div>
+
+      <div class="preview__sender-info">
+        <div class="preview__sender-row">
+          <strong class="preview__sender-name">
+            {{ email.sender }}
+          </strong>
+
+          <span class="preview__date">
+            {{ formatTime(email.timestamp) }}
+          </span>
+        </div>
+
+        <p class="preview__sender-email">
+          {{ email.senderEmail }}
+        </p>
+      </div>
+    </div>
+    <div class="preview__subject"> Subject : {{email.subject}}</div>
+    <div class="preview__body" [innerHTML]="email.body"></div>
+  </div>
+</div>
+
+<ng-template #noSelection>
+  <div class="preview preview--empty">
+    <div class="preview__empty-content">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+        <rect
+          x="8"
+          y="16"
+          width="48"
+          height="36"
+          rx="5"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-opacity="0.2"
+        />
+        <path
+          d="M8 26l24 16 24-16"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-opacity="0.2"
+        />
+      </svg>
+     
+    </div>
+  </div>
+</ng-template>

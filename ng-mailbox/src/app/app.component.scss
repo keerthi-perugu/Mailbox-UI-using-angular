@@ -1,0 +1,114 @@
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: #F6F8FC; 
+}
+
+.app-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+
+  border-radius: 0;
+  margin: 0;
+
+  background: #FFFFFF;
+  box-shadow: none; 
+}
+
+.app-preview {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  background: #FFFFFF;
+}
+
+
+@media (max-width: 900px) {
+  app-email-list {
+    width: 320px;
+    min-width: 320px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .app-shell {
+    flex-direction: column;
+    background: #FFFFFF;
+  }
+
+  app-sidebar {
+    width: 100%;
+    height: auto;
+
+    ::ng-deep .sidebar {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      padding: 8px 12px;
+      background: #F6F8FC;
+
+      &__logo {
+        padding: 0;
+        border: none;
+        margin-right: 12px;
+      }
+
+      &__compose {
+        margin: 0;
+        padding: 6px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+      }
+
+      &__nav {
+        display: flex;
+        overflow-x: auto;
+        flex: 1;
+        padding: 0;
+      }
+
+      &__nav ul {
+        display: flex;
+        gap: 4px;
+      }
+
+      &__nav-item {
+        padding: 8px 10px;
+        border-radius: 16px;
+        white-space: nowrap;
+      }
+
+      &__nav-label-text {
+        display: none;
+      }
+
+      &__bottom {
+        display: none;
+      }
+    }
+  }
+
+  .app-main {
+    flex-direction: column;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    flex: 1;
+    min-height: 0;
+  }
+
+  app-email-list {
+    width: 100%;
+    max-height: 45%;
+    border-right: none;
+    border-bottom: 1px solid #E0E0E0;
+  }
+
+  .app-preview {
+    flex: 1;
+  }
+}

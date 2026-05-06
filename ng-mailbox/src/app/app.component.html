@@ -1,0 +1,8 @@
+<div class="app-shell">
+  <app-sidebar (folderChange)="onFolderChange($event)"></app-sidebar>
+
+  <main class="app-main">
+    <app-email-list [folder]="activeFolder" (emailSelected)="onEmailSelected()"></app-email-list>
+    <app-email-preview class="app-preview"></app-email-preview>
+  </main>
+</div>

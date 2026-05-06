@@ -1,0 +1,113 @@
+.email-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--list-width);
+  background: #FFFFFF;
+  border-right: 1px solid #E0E0E0;
+
+  &__header {
+    padding: 16px;
+    border-bottom: 1px solid #E0E0E0;
+    flex-shrink: 0;
+  }
+.email-list__pagination-img {
+  display: flex;
+  justify-content: flex-end; 
+  padding: 6px 16px 10px;
+}
+
+.email-list__pagination-img img {
+  height: 18px; 
+  width: auto;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.email-list__pagination-img img:hover {
+  opacity: 1;
+}
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__title {
+    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;   
+    color: #202124;
+    letter-spacing: 0;
+  }
+
+
+  &__unread-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: #E8F0FE;
+    color: #1A73E8;
+  }
+
+  &__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 12px;
+    color: #5F6368;
+    pointer-events: none;
+    font-size: 18px;
+  }
+
+ 
+  &__search-input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    border: 1px solid #E0E0E0;
+    border-radius: 24px;   
+    background: #F1F3F4;
+    color: #202124;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+
+    &::placeholder {
+      color: #5F6368;
+    }
+
+    &:focus {
+      background: #FFFFFF;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+      border-color: transparent;
+    }
+  }
+
+  &__search-clear {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #5F6368;
+    cursor: pointer;
+    font-size: 16px;
+
+    &:hover {
+      color: #202124;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
